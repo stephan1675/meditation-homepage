@@ -5,11 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vipassana &amp; Meditation – Historisches Fotoarchiv</title>
   <link rel="stylesheet" href="./styles.css">
+  <script>
+    // Theme vor dem ersten Rendern setzen (verhindert Aufblitzen)
+    (() => {
+      let theme = null;
+      try { theme = localStorage.getItem("theme"); } catch (e) {}
+      if (theme !== "light" && theme !== "dark") {
+        theme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
 </head>
 <body>
   <header class="hero">
     <div class="container">
-      <p class="eyebrow">Historisches Archiv · Google Drive Testlauf</p>
+      <div class="hero-top">
+        <p class="eyebrow">Historisches Archiv · Google Drive Testlauf</p>
+        <button class="theme-toggle" type="button" id="theme-toggle" aria-pressed="false">
+          <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+          <span class="theme-toggle-label">Dunkel</span>
+        </button>
+      </div>
       <h1>Vipassana &amp; Meditation</h1>
       <p class="subtitle">
         Sechs ausgewählte Archivaufnahmen aus der Lehrer-Linie und frühen Kursen
@@ -105,6 +122,30 @@
     </section>
   </main>
 
+  <section class="about container" id="about" aria-labelledby="about-title">
+    <div class="about-inner">
+      <div>
+        <h2 id="about-title">Über dieses Archiv</h2>
+        <p>
+          Die Aufnahmen dokumentieren die Weitergabe der Vipassana-Meditation, wie sie
+          über Generationen in Myanmar bewahrt und von S.&nbsp;N.&nbsp;Goenka ab 1969 nach
+          Indien und von dort in die Welt getragen wurde.
+        </p>
+        <p>
+          Die Kursbilder zeigen die bescheidenen Anfänge: frühe Zehn-Tage-Kurse wie 1974
+          in Ladnun, oft in provisorischen Unterkünften, sowie das 1976 gegründete
+          Zentrum Dhamma Giri in Igatpuri, das sich zum Hauptzentrum der Tradition entwickelte.
+        </p>
+      </div>
+      <ol class="lineage" aria-label="Lehrer-Linie">
+        <li><strong>Ledi Sayadaw</strong><span>Birmanischer Mönch, belebte die Praxis für Laien neu</span></li>
+        <li><strong>Saya Thetgyi</strong><span>Einer der ersten Laienlehrer der Linie</span></li>
+        <li><strong>Sayagyi U Ba Khin</strong><span>Gründer des International Meditation Centre, Yangon</span></li>
+        <li><strong>S.&nbsp;N.&nbsp;Goenka</strong><span>Lehrte ab 1969 in Indien, weltweite Verbreitung</span></li>
+      </ol>
+    </div>
+  </section>
+
   <footer class="footer">
     <div class="container">
       <p>Quelle: Google Drive · <code>PADHANA signs / Metta Day Display Boards</code> · Offline-Archiv ohne externe Abhängigkeiten</p>
@@ -179,6 +220,29 @@
       const lbDesc = document.getElementById("lightbox-desc");
       const lbSource = document.getElementById("lightbox-source");
       let currentIndex = 0;
+
+      // Hell-/Dunkel-Umschalter
+      const root = document.documentElement;
+      const themeBtn = document.getElementById("theme-toggle");
+      const themeIcon = themeBtn.querySelector(".theme-toggle-icon");
+      const themeLabel = themeBtn.querySelector(".theme-toggle-label");
+
+      function applyTheme(theme) {
+        const isDark = theme === "dark";
+        root.dataset.theme = theme;
+        themeIcon.textContent = isDark ? "☀" : "☾";
+        themeLabel.textContent = isDark ? "Hell" : "Dunkel";
+        themeBtn.setAttribute("aria-pressed", String(isDark));
+        themeBtn.setAttribute("aria-label", isDark ? "Zum hellen Design wechseln" : "Zum dunklen Design wechseln");
+      }
+
+      applyTheme(root.dataset.theme === "dark" ? "dark" : "light");
+
+      themeBtn.addEventListener("click", () => {
+        const next = root.dataset.theme === "dark" ? "light" : "dark";
+        applyTheme(next);
+        try { localStorage.setItem("theme", next); } catch (e) {}
+      });
 
       filterBtns.forEach((btn) => {
         btn.addEventListener("click", () => {
