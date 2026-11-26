@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vipassana &amp; Meditation – Historisches Fotoarchiv</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <p class="eyebrow">Historisches Archiv · Google Drive Testlauf</p>
+      <h1>Vipassana &amp; Meditation</h1>
+      <p class="subtitle">
+        Sechs ausgewählte Archivaufnahmen aus der Lehrer-Linie und frühen Kursen
+        in Indien – direkt aus Google Drive lokal eingebunden.
+      </p>
+      <nav class="filters" aria-label="Kategorien filtern">
+        <button class="filter-btn is-active" type="button" data-filter="all">Alle (6)</button>
+        <button class="filter-btn" type="button" data-filter="teachers">Lehrer-Linie (3)</button>
+        <button class="filter-btn" type="button" data-filter="courses">Historische Kurse (3)</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="gallery" id="gallery" aria-label="Fotogalerie">
+      <article class="card" data-category="teachers">
+        <button class="card-trigger" type="button" data-index="0" aria-label="Saya Thetgyi vergrößern">
+          <div class="media-wrap">
+            <img src="assets/photos/saya-thetgyi.jpg" alt="Porträt von Saya Thetgyi (1873–1945)" loading="lazy">
+          </div>
+          <div class="card-body">
+            <span class="badge">Lehrer-Linie</span>
+            <h2>Saya Thetgyi (1873–1945)</h2>
+            <p>Historisches Porträt aus der birmanischen Vipassana-Linie (Ledi Sayadaw → Saya Thetgyi).</p>
+          </div>
+        </button>
+      </article>
+
+      <article class="card" data-category="teachers">
+        <button class="card-trigger" type="button" data-index="1" aria-label="Sayagyi U Ba Khin vergrößern">
+          <div class="media-wrap">
+            <img src="assets/photos/sayagyi-u-ba-khin.jpg" alt="Porträt von Sayagyi U Ba Khin (1899–1971)" loading="lazy">
+          </div>
+          <div class="card-body">
+            <span class="badge">Lehrer-Linie</span>
+            <h2>Sayagyi U Ba Khin (1899–1971)</h2>
+            <p>Gründer des International Meditation Centre in Yangon und Lehrer von S. N. Goenka.</p>
+          </div>
+        </button>
+      </article>
+
+      <article class="card" data-category="teachers">
+        <button class="card-trigger" type="button" data-index="2" aria-label="S. N. Goenka vergrößern">
+          <div class="media-wrap">
+            <img src="assets/photos/goenkaji-1924.jpg" alt="Archivaufnahme von S. N. Goenka (geb. 1924)" loading="lazy">
+          </div>
+          <div class="card-body">
+            <span class="badge">Lehrer-Linie</span>
+            <h2>Goenkaji (1924)</h2>
+            <p>Archivporträt von S. N. Goenka, der die Vipassana-Tradition ab 1969 weltweit verbreitete.</p>
+          </div>
+        </button>
+      </article>
+
+      <article class="card" data-category="courses">
+        <button class="card-trigger" type="button" data-index="3" aria-label="Kurs in Ladnun 1974 vergrößern">
+          <div class="media-wrap">
+            <img src="assets/photos/ladnun-course-1974.jpg" alt="Vipassana-Kurs in Ladnun, Indien (1974)" loading="lazy">
+          </div>
+          <div class="card-body">
+            <span class="badge">Historische Kurse</span>
+            <h2>Kurs in Ladnun (1974)</h2>
+            <p>Früher Kurs in Rajasthan unter freiem Himmel aus den Anfangsjahren in Indien.</p>
+          </div>
+        </button>
+      </article>
+
+      <article class="card" data-category="courses">
+        <button class="card-trigger" type="button" data-index="4" aria-label="Altes Dhamma Giri vergrößern">
+          <div class="media-wrap">
+            <img src="assets/photos/old-dhamma-giri.jpg" alt="Historische Ansicht von Dhamma Giri in Igatpuri" loading="lazy">
+          </div>
+          <div class="card-body">
+            <span class="badge">Historische Kurse</span>
+            <h2>Altes Dhamma Giri</h2>
+            <p>Historische Geländeansicht des Hauptzentrums Dhamma Giri in Igatpuri, Indien.</p>
+          </div>
+        </button>
+      </article>
+
+      <article class="card" data-category="courses">
+        <button class="card-trigger" type="button" data-index="5" aria-label="Kurs in Dhamma Giri vergrößern">
+          <div class="media-wrap">
+            <img src="assets/photos/course-dhamma-giri.jpg" alt="Gruppenaufnahme eines Kurses in Dhamma Giri" loading="lazy">
+          </div>
+          <div class="card-body">
+            <span class="badge">Historische Kurse</span>
+            <h2>Kurs in Dhamma Giri</h2>
+            <p>Archivaufnahme aus einem Kurs im Zentrum Dhamma Giri (Igatpuri).</p>
+          </div>
+        </button>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Quelle: Google Drive · <code>PADHANA signs / Metta Day Display Boards</code> · Offline-Archiv ohne externe Abhängigkeiten</p>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
+    <div class="lightbox-backdrop" data-close></div>
+    <figure class="lightbox-dialog">
+      <button class="lightbox-close" type="button" data-close aria-label="Schließen">&times;</button>
+      <img id="lightbox-img" src="" alt="">
+      <figcaption class="lightbox-caption">
+        <div class="lightbox-meta">
+          <h3 id="lightbox-title"></h3>
+          <p id="lightbox-desc"></p>
+          <small id="lightbox-source"></small>
+        </div>
+        <div class="lightbox-nav">
+          <button type="button" id="prev-btn" aria-label="Vorheriges Foto">&larr;</button>
+          <button type="button" id="next-btn" aria-label="Nächstes Foto">&rarr;</button>
+        </div>
+      </figcaption>
+    </figure>
+  </div>
+
+  <script>
+    (() => {
+      const photos = [
+        {
+          src: "assets/photos/saya-thetgyi.jpg",
+          title: "Saya Thetgyi (1873–1945)",
+          desc: "Historisches Porträt aus der birmanischen Vipassana-Linie (Ledi Sayadaw → Saya Thetgyi).",
+          source: "Drive-Original: Saya Thetgyi (1873-1945) 19.09.13 19.09.13.jpg"
+        },
+        {
+          src: "assets/photos/sayagyi-u-ba-khin.jpg",
+          title: "Sayagyi U Ba Khin (1899–1971)",
+          desc: "Gründer des International Meditation Centre in Yangon und Lehrer von S. N. Goenka.",
+          source: "Drive-Original: Sayagyi U Ba Khin (1899-1971).jpg"
+        },
+        {
+          src: "assets/photos/goenkaji-1924.jpg",
+          title: "Goenkaji (1924)",
+          desc: "Archivporträt von S. N. Goenka, der die Vipassana-Tradition ab 1969 weltweit verbreitete.",
+          source: "Drive-Original: Goenkaji (1924).jpg"
+        },
+        {
+          src: "assets/photos/ladnun-course-1974.jpg",
+          title: "Kurs in Ladnun (1974)",
+          desc: "Früher Kurs in Rajasthan unter freiem Himmel aus den Anfangsjahren in Indien.",
+          source: "Drive-Original: Ladnun course 1974.jpg"
+        },
+        {
+          src: "assets/photos/old-dhamma-giri.jpg",
+          title: "Altes Dhamma Giri",
+          desc: "Historische Geländeansicht des Hauptzentrums Dhamma Giri in Igatpuri, Indien.",
+          source: "Drive-Original: Old Dhamma Giri 19.09.35.jpg"
+        },
+        {
+          src: "assets/photos/course-dhamma-giri.jpg",
+          title: "Kurs in Dhamma Giri",
+          desc: "Archivaufnahme aus einem Kurs im Zentrum Dhamma Giri (Igatpuri).",
+          source: "Drive-Original: Course at Dhamma Giri 19.10.04.jpg"
+        }
+      ];
+
+      const filterBtns = document.querySelectorAll(".filter-btn");
+      const cards = document.querySelectorAll(".card");
+      const lightbox = document.getElementById("lightbox");
+      const lbImg = document.getElementById("lightbox-img");
+      const lbTitle = document.getElementById("lightbox-title");
+      const lbDesc = document.getElementById("lightbox-desc");
+      const lbSource = document.getElementById("lightbox-source");
+      let currentIndex = 0;
+
+      filterBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const filter = btn.dataset.filter;
+          filterBtns.forEach((b) => b.classList.toggle("is-active", b === btn));
+          cards.forEach((card) => {
+            card.hidden = filter !== "all" && card.dataset.category !== filter;
+          });
+        });
+      });
+
+      function openLightbox(idx) {
+        currentIndex = (idx + photos.length) % photos.length;
+        const item = photos[currentIndex];
+        lbImg.src = item.src;
+        lbImg.alt = item.title;
+        lbTitle.textContent = item.title;
+        lbDesc.textContent = item.desc;
+        lbSource.textContent = item.source;
+        lightbox.hidden = false;
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLightbox() {
+        lightbox.hidden = true;
+        lightbox.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
+
+      document.querySelectorAll(".card-trigger").forEach((trigger) => {
+        trigger.addEventListener("click", () => openLightbox(Number(trigger.dataset.index)));
+      });
+
+      lightbox.addEventListener("click", (e) => {
+        if (e.target.hasAttribute("data-close")) closeLightbox();
+      });
+
+      document.getElementById("prev-btn").addEventListener("click", () => openLightbox(currentIndex - 1));
+      document.getElementById("next-btn").addEventListener("click", () => openLightbox(currentIndex + 1));
+
+      document.addEventListener("keydown", (e) => {
+        if (lightbox.hidden) return;
+        if (e.key === "Escape") closeLightbox();
+        if (e.key === "ArrowLeft") openLightbox(currentIndex - 1);
+        if (e.key === "ArrowRight") openLightbox(currentIndex + 1);
+      });
+    })();
+  </script>
+</body>
+</html>
