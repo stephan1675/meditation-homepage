@@ -1,0 +1,65 @@
+name: Deploy Multi-Branch GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - 'claude/**'
+      - '**/*claude*'
+      - '*claude*'
+  create:
+  delete:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: (github.event_name != 'create' && github.event_name != 'delete') || github.event.ref_type == 'branch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository with full branch history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch all remote branches
+        run: |
+          git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+          git fetch --prune origin
+
+      - name: Build multi-branch site
+        run: |
+          if git cat-file -e origin/main:.github/scripts/build_multibranch.py 2>/dev/null; then
+            git show origin/main:.github/scripts/build_multibranch.py > /tmp/build_multibranch.py
+            python3 /tmp/build_multibranch.py --repo . --output _site --remote origin
+          else
+            python3 .github/scripts/build_multibranch.py --repo . --output _site --remote origin
+          fi
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

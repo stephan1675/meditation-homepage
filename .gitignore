@@ -10,3 +10,7 @@ Desktop.ini
 .vscode/
 .idea/
 *.swp
+
+# GitHub Pages Build-Ausgabe
+_site/
+

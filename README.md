@@ -18,3 +18,12 @@ Quelle: Google Drive (`PADHANA signs / Metta Day Display Boards`).
   ```bash
   python3 -m http.server 8080
   ```
+
+## GitHub Pages (Multi-Branch-Workflow)
+Die Seite wird automatisch über `.github/workflows/deploy-pages.yml` auf GitHub Pages veröffentlicht:
+- **Live-URL (`main`):** https://stephan1675.github.io/meditation-homepage/
+- **`develop`:** https://stephan1675.github.io/meditation-homepage/branches/develop/
+- **Claude-Branches (`claude/*`, `*claude*`):** `https://stephan1675.github.io/meditation-homepage/branches/<branch-name>/`
+
+Beim Build (`.github/scripts/build_multibranch.py`) wird automatisch ein zentrierter Branch-Switcher oben auf jeder Seite eingefügt, über den direkt zwischen allen veröffentlichten Branches gewechselt werden kann.
+
